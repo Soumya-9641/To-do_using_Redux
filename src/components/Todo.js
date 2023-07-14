@@ -105,9 +105,9 @@ const Todo = () => {
 
                     
                 </div>
-                <div>
+                {/* <div>
                   <p onClick={()=>dispatch(removeTodo())} className='container_submit'>Remove All</p>
-                </div>
+                </div> */}
         </div>  
     </>
   )
