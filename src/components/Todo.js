@@ -1,6 +1,7 @@
 import React ,{useState,useEffect} from 'react'
 import "./todo.css"
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {useSelector, useDispatch} from "react-redux";
 import {addTodo,deleteTodo,removeTodo,fetchData} from "../actions/index"
 import {AiFillDelete} from "react-icons/ai";
@@ -13,6 +14,16 @@ const Todo = () => {
  
  useEffect(() => {
   fetchData();
+  toast.success('Fetched data from public api', {
+    position: "bottom-left",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    });
  }, []);
 
 
@@ -42,8 +53,23 @@ const Todo = () => {
    
   return (
     <>
+   
         <div className='container'>
+        
                 <div className='container_main'>
+                <ToastContainer
+position="bottom-left"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="dark"
+/>
+                
                     <h2>To-do List using redux</h2>
                     <h6>Write your daily to-do work ✍️</h6>
                 </div>
@@ -52,7 +78,7 @@ const Todo = () => {
                     <span onClick={()=>dispatch(addTodo(adddata),setData(''))} className='container_add'>+</span>
                 </div>
                 <div className='container_show1'>
-             
+                
                                     {todo.map((todos, index) => (
                       <div key={index}>
                         {todos.map((todo) => {
